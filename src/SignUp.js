@@ -41,7 +41,26 @@ const SignUp = () => {
     }, [firstName, password]);
 
   return (
-    <div>SignUp</div>
+    <section>
+        <p ref={errRef} className={errMsg? "errmsg" : "offscreen"}
+        aria-live="assertive">{errMsg}</p>
+        <hi>SignUp</hi>
+        <form>
+            <label htmlFor='firstName'>First Name: 
+            </label>
+            <input
+            type="text"
+            id="firstName"
+            ref={userRef}
+            autoComplete="off"
+            onChange={(e)=>setFirstName(e.target.value)}
+            required
+            aria-invalid={validName ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=> setFirstNameFocus(true)}
+            onBlur={() => setFirstNameFocus(false)}/>
+        </form>
+    </section>
   )
 }
 
