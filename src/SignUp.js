@@ -1,6 +1,7 @@
 import {useRef, useEffect, useState} from 'react'
 
 const FIRST_NAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,24}$/;
 
 const SignUp = () => {
@@ -10,6 +11,10 @@ const SignUp = () => {
     const [firstName, setFirstName] = useState('');
     const [validName, setValidName] = useState(false);
     const [firstNameFocus, setFirstNameFocus] = useState(false);
+
+    const [email, setEmail] = useState('');
+    const [validEmail, setValidEmail] = useState(false);
+    const [emailFocus, setEmailFocus] = useState(false);
 
     const [password, setPassword] = useState('');
     const [validPassword, setValidPassword] = useState(false);
@@ -30,6 +35,13 @@ const SignUp = () => {
     }, [firstName]);
 
     useEffect(()=>{
+        const output = EMAIL_REGEX.test(email);
+        console.log(output);
+        console.log(email);
+        setValidEmail(output);
+    }, [email]);
+
+    useEffect(()=>{
         const output = PASSWORD_REGEX.test(password);
         console.log(output);
         console.log(password);
@@ -38,7 +50,7 @@ const SignUp = () => {
 
     useEffect(()=>{
         setErrMsg('');
-    }, [firstName, password]);
+    }, [firstName, email, password]);
 
   return (
     <section>
@@ -62,6 +74,23 @@ const SignUp = () => {
                 4 to 24 characters.<br/>
                 Must begin with a letter.<br/>
                 Letters, numbers, hyphens and underscores allowed.
+            </p>
+
+            <label htmlFor='email'>Email: </label>
+            <input
+            type="text"
+            id="email"
+            autoComplete="off"
+            onChange={(e)=>setEmail(e.target.value)}
+            required
+            aria-invalid={validEmail ? "false" : "true"}
+            aria-describedby="emailnote"
+            onFocus={()=> setEmailFocus(true)}
+            onBlur={() => setEmailFocus(false)}/>
+            <p id='emailnote' className={email && emailFocus && !validEmail ? "instructions" : "offscreen"}>
+                The length of the personal_info part may be up to 64 characters long <br/>
+                Domain name may be up to 253 characters.<br/>
+                Can contain letters, numbers and characters.<br/>
             </p>
 
             <label htmlFor='password'>Password: </label>
