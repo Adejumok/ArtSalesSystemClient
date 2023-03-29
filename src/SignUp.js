@@ -33,7 +33,7 @@ const SignUp = () => {
         const output = PASSWORD_REGEX.test(password);
         console.log(output);
         console.log(password);
-        setValidName(output);
+        setValidPassword(output);
     }, [password]);
 
     useEffect(()=>{
@@ -62,6 +62,22 @@ const SignUp = () => {
                 4 to 24 characters.<br/>
                 Must begin with a letter.<br/>
                 Letters, numbers, hyphens and underscores allowed.
+            </p>
+
+            <label htmlFor='password'>Password: </label>
+            <input
+            type="password"
+            id="password"
+            onChange={(e)=>setPassword(e.target.value)}
+            required
+            aria-invalid={validPassword ? "false" : "true"}
+            aria-describedby="pwdnote"
+            onFocus={()=> setPasswordFocus(true)}
+            onBlur={() => setPasswordFocus(false)}/>
+            <p id='pwdnote' className={passwordFocus && password && !validPassword ? "instructions" : "offscreen"}>
+                8 to 24 characters.<br/>
+                Must include uppercase and lowercase letters, a number and a special character.<br/>
+                Allow special characters
             </p>
         </form>
     </section>
