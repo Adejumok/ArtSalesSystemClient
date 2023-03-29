@@ -18,9 +18,9 @@ const SignUp = () => {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
-    useEffect(()=>{
-        useRef.current.focus();
-    }, []);
+    // useEffect(()=>{
+    //     useRef.current.focus();
+    // }, []);
 
     useEffect(()=>{
         const output = FIRST_NAME_REGEX.test(firstName);
@@ -44,10 +44,9 @@ const SignUp = () => {
     <section>
         <p ref={errRef} className={errMsg? "errmsg" : "offscreen"}
         aria-live="assertive">{errMsg}</p>
-        <hi>SignUp</hi>
+        <h1>SignUp</h1>
         <form>
-            <label htmlFor='firstName'>First Name: 
-            </label>
+            <label htmlFor='firstName'>First Name: </label>
             <input
             type="text"
             id="firstName"
@@ -59,6 +58,11 @@ const SignUp = () => {
             aria-describedby="uidnote"
             onFocus={()=> setFirstNameFocus(true)}
             onBlur={() => setFirstNameFocus(false)}/>
+            <p id='uidnote' className={firstName && firstNameFocus && !validName ? "instructions" : "offscreen"}>
+                4 to 24 characters.<br/>
+                Must begin with a letter.<br/>
+                Letters, numbers, hyphens and underscores allowed.
+            </p>
         </form>
     </section>
   )
