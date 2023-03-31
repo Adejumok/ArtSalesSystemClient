@@ -26,10 +26,6 @@ const SignUp = () => {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
-    // useEffect(()=>{
-    //     useRef.current.focus();
-    // }, []);
-
     useEffect(()=>{
         const output = FIRST_NAME_REGEX.test(firstName);
         console.log(output);
@@ -80,7 +76,6 @@ const SignUp = () => {
             }else{
                 setErrMsg('Registration Failed')
             }
-            errRef.current.focus();
         }
     }
 
