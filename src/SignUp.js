@@ -1,8 +1,11 @@
 import {useRef, useEffect, useState} from 'react'
+import axios from 'axios';
 
 const FIRST_NAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,24}$/;
+const SIGNUP_URL = '/api/v1/auth/register';
+
 
 const SignUp = () => {
     const userRef = useRef();
@@ -52,12 +55,41 @@ const SignUp = () => {
         setErrMsg('');
     }, [firstName, email, password]);
 
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        const vF = FIRST_NAME_REGEX.test(firstName);
+        const vE = EMAIL_REGEX.test(email);
+        const vP = PASSWORD_REGEX.test(password);
+        if(!vF || !vE || !vP){
+            setErrMsg("Invalid Entry");
+            return;
+        }
+        try{
+            const response = await axios.post(SIGNUP_URL, JSON.stringify({
+                email, firstName, password
+            }),
+            {
+                headers: {'Content-Type': 'application/json'},
+                withCredentials: true
+            });
+            console.log(JSON.stringify(response));
+            setSuccess(true)
+        }catch(err){
+            if(!err?.response){
+                setErrMsg('No Server Response');
+            }else{
+                setErrMsg('Registration Failed')
+            }
+            errRef.current.focus();
+        }
+    }
+
   return (
     <section>
         <p ref={errRef} className={errMsg? "errmsg" : "offscreen"}
         aria-live="assertive">{errMsg}</p>
         <h1>SignUp</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
             <label htmlFor='firstName'>First Name: </label>
             <input
             type="text"
@@ -108,7 +140,14 @@ const SignUp = () => {
                 Must include uppercase and lowercase letters, a number and a special character.<br/>
                 Allow special characters
             </p>
+            <button disabled={!validName || !validEmail || !validPassword ? true : false}>Sign Up</button>
         </form>
+        <p>
+            Already registered?<br/>
+            <span className='line'>
+                <a href='#'>Sign In</a>
+            </span>
+        </p>
     </section>
   )
 }
