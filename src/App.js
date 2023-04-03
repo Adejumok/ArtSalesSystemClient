@@ -1,6 +1,6 @@
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import SignUp from './SignUp';
+import SignUp from './components/SignUp';
 
 function App() {
   return (

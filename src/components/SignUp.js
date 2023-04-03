@@ -60,25 +60,15 @@ const SignUp = () => {
             setErrMsg("Invalid Entry");
             return;
         }
-        try{
-            const response = await axios.post(SIGNUP_URL, JSON.stringify({
-                email, firstName, password
-            }),
-            {
-                headers: {'Content-Type': 'application/json'},
-                withCredentials: true
-            });
-            console.log(JSON.stringify(response));
-            setSuccess(true)
-        }catch(err){
-            if(!err?.response){
-                setErrMsg('No Server Response');
-            }else{
-                setErrMsg('Registration Failed')
-            }
-        }
-    }
-
+        
+        axios.post('http://localhost:8081/api/v1/auth/register', {
+            firstName: firstName,
+            email: email,
+            password: password
+        })
+        .then(response => console.log(response))
+        .catch(error => console.error(error));
+        };
   return (
     <section>
         <p ref={errRef} className={errMsg? "errmsg" : "offscreen"}
