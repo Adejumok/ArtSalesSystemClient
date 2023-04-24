@@ -1,4 +1,4 @@
-### Art Sales System Client
+# Art Sales System Client
 
 This is a React project that allows users to do X, Y, and Z.
 
