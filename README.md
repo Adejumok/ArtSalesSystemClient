@@ -21,10 +21,21 @@ These instructions will help you get a copy of the project up and running on you
 *Node.js (version 18.15.0. or higher)
 *npm (version 9.6.5 or higher)
 
-## Installation
+### Installation
 
-To get started, clone the repository and run:
+1. To get started, clone the repository to your local machine:
+### git clone https://github.com/username/project-name.git
+2. Change directory to the project folder:
+### cd project-name
+3. Install the dependencies:
 ### npm install
+
+### Running the Project
+To run the project locally, follow these steps:
+### npm start
+
+## Usage
+Include any relevant information about how to use the project, including examples or screenshots.
 
 ## Contributing
 Contributions are welcome! To contribute, please follow these steps:
@@ -37,3 +48,9 @@ Contributions are welcome! To contribute, please follow these steps:
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contact
+Please feel free to contact me if you have any questions or feedback.
+
+Email: roseadeyinka01@example.com
+GitHub: @Adejumok
