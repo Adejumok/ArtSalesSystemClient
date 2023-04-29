@@ -22,6 +22,7 @@ These instructions will help you get a copy of the project up and running on you
 
 ### Prerequisites
 *Node.js `(version 18.15.0. or higher)`
+
 *npm `(version 9.6.5 or higher)`
 
 
