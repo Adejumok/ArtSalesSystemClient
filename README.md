@@ -66,7 +66,7 @@ Contributions are welcome! To contribute, please follow these steps:
 
 
 ## License
-This project is licensed under the MIT License. See the LICENSE(https://github.com/Adejumok/ArtSalesSystemClient/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Adejumok/ArtSalesSystemClient/blob/main/LICENSE) file for details.
 
 
 ## Contact
