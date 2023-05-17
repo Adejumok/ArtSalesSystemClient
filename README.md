@@ -31,7 +31,7 @@ These instructions will help you get a copy of the project up and running on you
 1. To get started, clone the repository to your local machine:
 ### `git clone (https://github.com/Adejumok/ArtSalesSystemClient.git)`
 2. Change directory to the project folder:
-### `cd project-name`
+### `cd art-sales-system-client`
 3. Install the dependencies:
 ### `npm install`
 
