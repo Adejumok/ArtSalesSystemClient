@@ -47,8 +47,9 @@ Below is the organisation of the project structure
 ```
 art-sales-system-client/
   ├── src/
-  │   ├── components/        # React components
-  |   ├── context/           # Context for sharing data across components
+  │   ├── api/               # Connect to the server
+  |   ├── assets/            # Runtime assets
+  |   ├── components/        # React components
   │   ├── App.js             # Main application component
   │   ├── index.js           # Entry point
   │   └── index.css          # Entry style
