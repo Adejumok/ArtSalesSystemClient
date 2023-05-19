@@ -44,7 +44,8 @@ To run the project locally, follow these steps:
 ## Folder Structure
 Below is the organisation of the project structure
 
-expense-tracker/
+```
+art-sales-system-client/
   ├── src/
   │   ├── components/        # React components
   |   ├── context/           # Context for sharing data across components
@@ -57,7 +58,7 @@ expense-tracker/
   ├── README.md              # Project readme
   ├── package-lock.json      # Describes NPM package configuration
   └── package.json           # NPM package configuration
-  
+```
 
 ## Usage
 To use this project, follow these steps:
