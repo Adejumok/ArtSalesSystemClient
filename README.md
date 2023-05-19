@@ -10,10 +10,11 @@ Project Name
   i. Prerequisites
   ii. Installation
   iii. Running the Project
-3. Usage
-4. Contributing
-5. License
-6. Contact
+3. Folder Structure
+4. Usage
+5. Contributing
+6. License
+7. Contact
 
 
 ## Getting Started
